@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Fashion Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .product-img {
+            height: 300px; 
+            width: 100%;
+            object-fit: cover; 
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Fashion Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero-banner" class="py-5 text-center bg-dark text-white" style="margin-top: 56px;">
+        <div class="container">
+            <h1 class="display-4">Seasonal Fashion Sale</h1>
+            <p class="lead">Discover the latest trends with discounts up to 50% off!</p>
+        </div>
+    </section>
+     <div class="container mt-5">
+        <h2>Shopping Cart</h2>
+        <p>Items in your cart: <span id="cart-counter">0</span>
+    <section id="products" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Our Products</h2>
+            <p class="text-center">Browse through our collection of Shoes, Accessories, and Clothing.</p>
+            <h3 class="text-center mt-5">Shoes</h3>
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="shoe1.jpg" class="card-img-top product-img" alt="Shoe 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Running Shoes</h5>
+                            <p class="card-text">Comfortable and lightweight running shoes.</p>
+                            <p class="price">$49.99</p>
+                            <a href="javascript:void(0);"class="btn btn-primary" onclick="addToCart('Running Shoes', 49.99)">Add to Cart</a>
+                            <a href="javascript:void(0);" class="btn btn-outline-dark" onclick="showPurchaseModal('Running Shoes', 49.99)">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="shoe2.jpg" class="card-img-top product-img" alt="Shoe 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Casual Sneakers</h5>
+                            <p class="card-text">Stylish sneakers for everyday wear.</p>
+                            <p class="price">$39.99</p>
+                            <a href="javascript:void(0);" class="btn btn-primary" onclick="addToCart('Casual Sneakers', 39.99)">Add to Cart</a>
+                            <a href="javascript:void(0);" class="btn btn-outline-dark" onclick="showPurchaseModal('Casual Sneakers', 39.99)">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="shoe.jpg" class="card-img-top product-img" alt="Shoe 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Sports Shoes</h5>
+                            <p class="card-text">Ideal for active lifestyles.</p>
+                            <p class="price">$55.00</p>
+                            <a href="javascript:void(0);" class="btn btn-primary" onclick="addToCart('Sports Shoes', 55.00)">Add to Cart</a>
+                            <a href="javascript:void(0);" class="btn btn-outline-dark" onclick="showPurchaseModal('Sports Shoes', 55.00)">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="boot2.jpg" class="card-img-top product-img" alt="Boot 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Classic Boots</h5>
+                            <p class="card-text">Durable boots for any terrain.</p>
+                            <p class="price">$60.00</p>
+                            <a href="javascript:void(0);" class="btn btn-primary" onclick="addToCart('Classic Boots', 60.00)">Add to Cart</a>
+                            <a href="javascript:void(0);" class="btn btn-outline-dark" onclick="showPurchaseModal('Classic Boots', 60.00)">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="boot3.jpg" class="card-img-top product-img" alt="Boot 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Winter Boots</h5>
+                            <p class="card-text">Keep your feet warm in style.</p>
+                            <p class="price">$65.00</p>
+                            <a href="javascript:void(0);" class="btn btn-primary" onclick="addToCart('Winter Boots', 65.00)">Add to Cart</a>
+                            <a href="javascript:void(0);" class="btn btn-outline-dark" onclick="showPurchaseModal('Winter Boots', 65.00)">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h3 class="text-center mt-5">Accessories</h3>
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="jhumki2.jpg" class="card-img-top product-img" alt="Jhumki 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Gold Jhumki</h5>
+                            <p class="card-text">Traditional jhumki earrings.</p>
+                            <p class="price">$25.00</p>
+                            <a href="javascript:void(0);" class="btn btn-primary" onclick="addToCart('Gold Jhumki', 25.00)">Add to Cart</a>
+                            <a href="javascript:void(0);" class="btn btn-outline-dark" onclick="showPurchaseModal('Gold Jhumki', 25.00)">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="jhumka1.jpg" class="card-img-top product-img" alt="Jhumki 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Silver Jhumki</h5>
+                            <p class="card-text">Elegant silver jhumki earrings.</p>
+                            <p class="price">$29.99</p>
+                            <a href="javascript:void(0);" class="btn btn-primary" onclick="addToCart('Silver Jhumki', 29.99)">Add to Cart</a>
+                            <a href="javascript:void(0);" class="btn btn-outline-dark" onclick="showPurchaseModal('Silver Jhumki', 29.99)">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="hoop1.jpg" class="card-img-top product-img" alt="Hoop 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Gold Hoops</h5>
+                            <p class="card-text">Classic gold hoop earrings.</p>
+                            <p class="price">$35.00</p>
+                            <a href="javascript:void(0);" class="btn btn-primary" onclick="addToCart('Gold Hoops', 35.00)">Add to Cart</a> 
+                            <a href="javascript:void(0);" class="btn btn-outline-dark" onclick="showPurchaseModal('Gold Hoops', 35.00)">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h3 class="text-center mt-5">Clothing</h3>
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="frock1.jpg" class="card-img-top product-img" alt="Frock 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Summer Frock</h5>
+                            <p class="card-text">Perfect for summer outings.</p>
+                            <p class="price">$39.99</p>
+                            <a href="javascript:void(0);" class="btn btn-primary" onclick="addToCart('Summer Frock', 39.99)">Add to Cart</a>
+                            <a href="javascript:void(0);" class="btn btn-outline-dark" onclick="showPurchaseModal('Summer Frock', 39.99)">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="frock2.jpg" class="card-img-top product-img" alt="Frock 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Floral Frock</h5>
+                            <p class="card-text">Bright and beautiful floral design.</p>
+                            <p class="price">$42.99</p>
+                            <a href="javascript:void(0);" class="btn btn-primary" onclick="addToCart('Floral Frock', 42.99)">Add to Cart</a>
+                            <a href="javascript:void(0);" class="btn btn-outline-dark" onclick="showPurchaseModal('Floral Frock', 42.99)">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="frock3.jpg" class="card-img-top product-img" alt="Frock 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Casual Dress</h5>
+                            <p class="card-text">Stylish and comfortable casual dress.</p>
+                            <p class="price">$49.99</p>
+                            <a href="javascript:void(0);" class="btn btn-primary" onclick="addToCart('Casual Dress', 49.99)">Add to Cart</a>
+                            <a href="javascript:void(0);" class="btn btn-outline-dark" onclick="showPurchaseModal('Casual Dress', 49.99)">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="purchaseModalLabel">Successfully Purchased</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Thank you for your purchase! Your order is being processed.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="modal fade" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addToCartModalLabel">Item Added to Cart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="modalMessage"></p>
+          <p><strong id="modalProductName"></strong></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+document.addEventListener("DOMContentLoaded", () => {
+    updateCartCounter();
+});
+function addToCart(productName, price) {
+    const existingItem = cart.find(item => item.name === productName);
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({ name: productName, price: price, quantity: 1 });
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCounter();
+    showAddToCartModal(productName);
+}
+function updateCartCounter() {
+    document.getElementById("cart-counter").textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+}
+function showAddToCartModal(productName) {
+    const modal = new bootstrap.Modal(document.getElementById("addToCartModal"));
+    document.getElementById("modalProductName").textContent = productName;
+    document.getElementById("modalMessage").textContent = `${productName} has been successfully added to your cart!`;
+    modal.show();
+}
+
+function showPurchaseModal(productName, price) {
+    const modal = new bootstrap.Modal(document.getElementById("purchaseModal"));
+    document.getElementById("purchaseModalLabel").textContent = `Successfully Purchased ${productName}`;
+    document.querySelector(".modal-body").innerHTML = `Thank you for your purchase! Your order for ${productName} worth $${price} is being processed.`;
+    modal.show();
+}
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    
+    <script src="script.js"></script>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2025 Fashion Store. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
