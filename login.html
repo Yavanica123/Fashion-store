@@ -16,22 +16,56 @@
         <input type="password" id="password" placeholder="Password" required />
         <button type="submit">Login</button>
       </form>
-      <p class="register-link">Not registered? <a href="#">Create an account</a></p>
+      <p class="register-link">Not registered? <a href="register.html">Create an account</a></p>
     </div>
   </main>
 
   <script>
+    function setCookie(name, value, days) {
+      const d = new Date();
+      d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+      const expires = "expires=" + d.toUTCString();
+      document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
+    }
+
+    function getCookie(name) {
+      const cname = name + "=";
+      const decodedCookie = decodeURIComponent(document.cookie);
+      const ca = decodedCookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(cname) == 0) {
+          return c.substring(cname.length, c.length);
+        }
+      }
+      return "";
+    }
+
     const loginForm = document.getElementById('loginForm');
-    loginForm.addEventListener('submit', function(event) {
+    loginForm.addEventListener('submit', function (event) {
       event.preventDefault();
-  
-      const username = document.getElementById('username').value;
-      localStorage.setItem('username', username); 
-  
-      
-      window.location.href = 'index.html';
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const storedPassword = getCookie("user_" + username);
+
+      if (storedPassword && storedPassword === password) {
+        setCookie("loggedInUser", username, 1);
+        window.location.href = "index.html";
+      } else {
+        alert("Invalid username or password.");
+      }
     });
+
+    // Redirect if already logged in
+    const existingUser = getCookie("loggedInUser");
+    if (existingUser) {
+      window.location.href = "index.html";
+    }
   </script>
-  
 </body>
 </html>

@@ -14,6 +14,7 @@
     </style>
 </head>
 <body>
+    
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html">Fashion Store</a>
@@ -27,6 +28,11 @@
                     <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+                    <li class="nav-item"><a class="nav-link" href="MyOrders.html">My Orders</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="logoutUser()">Logout</a>
+                      </li>
+                      
                 </ul>
             </div>
         </div>
@@ -255,9 +261,47 @@ function showPurchaseModal(productName, price) {
     document.querySelector(".modal-body").innerHTML = `Thank you for your purchase! Your order for ${productName} worth $${price} is being processed.`;
     modal.show();
 }
+function deleteCookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  }
+
+  function logoutUser() {
+    deleteCookie("loggedInUser");
+    alert("You have been logged out.");
+    window.location.href = "login.html";
+  }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script>
+        // Auto-logout after 3 minutes (180000 ms)
+        let inactivityTimer;
+      
+        function resetInactivityTimer() {
+          clearTimeout(inactivityTimer);
+          inactivityTimer = setTimeout(() => {
+            logoutUser();
+          }, 60000); // 3 minutes
+        }
+      
+        function deleteCookie(name) {
+          document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        }
+      
+        function logoutUser() {
+          deleteCookie("loggedInUser");
+          alert("Session expired due to inactivity.");
+          window.location.href = "login.html";
+        }
+      
+        // Events to detect user activity
+        window.onload = resetInactivityTimer;
+        document.onmousemove = resetInactivityTimer;
+        document.onkeypress = resetInactivityTimer;
+        document.onclick = resetInactivityTimer;
+        document.onscroll = resetInactivityTimer;
+      </script>
+      
     
     <script src="script.js"></script>
 
@@ -272,9 +316,17 @@ function showPurchaseModal(productName, price) {
 
 
 
+<!-- 
 
-
-
+<script>
+    window.onload = function () {
+        const user = localStorage.getItem("loggedInUser");
+        if (!user) {
+            
+            window.location.href = "login.html";
+        }
+    }
+</script> -->
 
 
 

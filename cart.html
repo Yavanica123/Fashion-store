@@ -20,6 +20,10 @@
                     <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="MyOrders.html">My Orders</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="logout()">Logout</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -164,7 +168,41 @@ async function placeOrder() {
 
         
         updateCartUI();
-    </script>
 
+
+  function logout() {
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "login.html";
+  }
+    </script>
+<script>
+    // Auto-logout after 3 minutes (180000 ms)
+    let inactivityTimer;
+  
+    function resetInactivityTimer() {
+      clearTimeout(inactivityTimer);
+      inactivityTimer = setTimeout(() => {
+        logoutUser();
+      }, 60000); // 3 minutes
+    }
+  
+    function deleteCookie(name) {
+      document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    }
+  
+    function logoutUser() {
+      deleteCookie("loggedInUser");
+      alert("Session expired due to inactivity.");
+      window.location.href = "login.html";
+    }
+  
+    // Events to detect user activity
+    window.onload = resetInactivityTimer;
+    document.onmousemove = resetInactivityTimer;
+    document.onkeypress = resetInactivityTimer;
+    document.onclick = resetInactivityTimer;
+    document.onscroll = resetInactivityTimer;
+  </script>
+  
 </body>
 </html>

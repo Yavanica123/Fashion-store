@@ -18,7 +18,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/fashionstore', {
 .then(() => console.log("MongoDB connected successfully"))
 .catch(err => console.log(err));
 
-
+// Order Schema
 const OrderSchema = new mongoose.Schema({
     username: String,
     products: [
@@ -37,7 +37,7 @@ const OrderSchema = new mongoose.Schema({
 
 const Order = mongoose.model('Order', OrderSchema);
 
-// API route to save order
+// Route to save order
 app.post('/api/saveOrder', async (req, res) => {
     try {
         const { username, cartItems, totalBill } = req.body;
@@ -56,7 +56,20 @@ app.post('/api/saveOrder', async (req, res) => {
     }
 });
 
-// Run server
+// Route to get orders for a user
+app.get('/api/orders/:username', async (req, res) => {
+    try {
+        const username = req.params.username;
+        const orders = await Order.find({ username }).sort({ createdAt: -1 });
+
+        res.status(200).json(orders);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Server error while fetching orders" });
+    }
+});
+
+// Start server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
